@@ -180,6 +180,7 @@ void PremModel::LoadModel(string filename)
     AddLayer(radius, density, zoa, layer);
 
   }
+  fPremLayers_orig = fPremLayers;
 
 }
 
@@ -241,6 +242,55 @@ double PremModel::GetLayerZoA(int layer)
   cout << "ERROR: layer type not found" << endl;
   cout << "Returning 0" << endl;
   return 0;
+}
+
+//......................................................................
+///
+/// Scale the density of the indexed layer
+///
+/// Use this to change the Z/A of indexed layer,
+/// e.g. all outer-core layers
+///
+/// @param layer - The index of the layer type
+/// @param scale   - The scale to apply on the ORIGINAL density
+///
+void PremModel::ScaleLayerDensity(int layer, double scale)
+{
+
+  int nlayers = fPremLayers.size();
+
+  // Loop over all layers and change the ones
+  // with the given index
+  for(int i=0; i<nlayers; i++){
+
+    if(fPremLayers[i].layer != layer) continue;
+
+    fPremLayers[i].density = fPremLayers_orig[i].density * scale;
+
+  }
+
+}
+
+//......................................................................
+///
+/// Get the effective Z/A value for a single layer
+///
+/// @param layer - The index of the layer
+///
+double PremModel::GetLayerDensity(int layer)
+{
+
+  int nlayers = fPremLayers.size();
+
+  // This check assumes the layer types are in increasing order
+  if(layer > nlayers){
+    cout << "ERROR: Not that many layers" << endl;
+    cout << "Returning 0" << endl;
+    return 0;
+  }
+
+  return fPremLayers[layer].density;
+
 }
 
 //......................................................................

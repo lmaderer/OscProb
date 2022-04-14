@@ -53,6 +53,9 @@ namespace OscProb {
       virtual void SetLayerZoA(int layer, double zoa); ///< Set Z/A of all layers of a given type
       virtual double GetLayerZoA(int layer); ///< Get Z/A of all layers of a given type
 
+      virtual void ScaleLayerDensity(int layer, double scale);
+      virtual double GetLayerDensity(int layer); ///< Get Z/A of a single layer
+
       virtual void SetTopLayerSize(double thick);      ///< Set the outermost layer thickness in km
 
       virtual void LoadModel(std::string filename); ///< Load an earth model from a file
@@ -73,6 +76,8 @@ namespace OscProb {
       virtual void AddPath(double length, PremLayer pl);  ///< Add a path segment to the sequence
 
       std::vector<OscProb::PremLayer> fPremLayers; ///< The layers in the earth model
+
+      std::vector<OscProb::PremLayer> fPremLayers_orig; ///< The layers in the ORIGINAL earth model
 
       std::vector<OscProb::NuPath> fNuPath; ///< The current neutrino path sequence
 
