@@ -50,6 +50,8 @@ namespace OscProb {
       virtual double GetTotalL(double cosT); ///< Get the total baseline for a given cosTheta
       virtual double GetCosT(double L); ///< Get the cosTheta for a given total baseline
 
+      virtual int GetNChemLayers(); // Get the number of chemical layers
+
       virtual void SetLayerZoA(int layer, double zoa); ///< Set Z/A of all layers of a given type
       virtual double GetLayerZoA(int layer); ///< Get Z/A of all layers of a given type
 

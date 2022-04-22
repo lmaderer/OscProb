@@ -186,6 +186,15 @@ void PremModel::LoadModel(string filename)
 
 //......................................................................
 ///
+/// Get the number of chemical layers
+///
+int PremModel::GetNChemLayers()
+{
+  return fPremLayers.back().layer;
+}
+
+//......................................................................
+///
 /// Set the effective Z/A value for all layers of a given type.
 ///
 /// Use this to change the Z/A of indexed layer,
@@ -246,9 +255,7 @@ double PremModel::GetLayerZoA(int layer)
 
 //......................................................................
 ///
-/// Scale the density of the indexed layer
-///
-/// Use this to change the Z/A of indexed layer,
+/// Scale the density of the indexed layer,
 /// e.g. all outer-core layers
 ///
 /// @param layer - The index of the layer type
@@ -273,7 +280,7 @@ void PremModel::ScaleLayerDensity(int layer, double scale)
 
 //......................................................................
 ///
-/// Get the effective Z/A value for a single layer
+/// Get the density value for a single layer
 ///
 /// @param layer - The index of the layer
 ///
