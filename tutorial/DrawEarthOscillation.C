@@ -121,8 +121,8 @@ void DrawEarthOscillation(double zoaref = 0.4661, double zoamod = 0.4991, double
   hEMu_IH_mod->SetLineStyle(7);
   
   // Set axis titles
-  if(isNuBar) hMuMu_NH->SetTitle(";Neutrino Energy (GeV);P(#bar{#nu}_{#mu}#rightarrow#bar{#nu}_{x})");
-  else        hMuMu_NH->SetTitle(";Neutrino Energy (GeV);P(#nu_{#mu}#rightarrow#nu_{x})");
+  if(isNuBar) hMuMu_NH->SetTitle(";Propagation length [km];P(#bar{#nu}_{#mu}#rightarrow#bar{#nu}_{x})");
+  else        hMuMu_NH->SetTitle(";Propagation length [km];P(#nu_{#mu}#rightarrow#nu_{x})");
   
   // Set x range
   hMuMu_NH->GetXaxis()->SetRangeUser(0,6368*2);
